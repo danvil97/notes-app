@@ -16,13 +16,23 @@ export default function Content() {
   };
 
   const handleNewNote = (text) => {
-    dispatch(addNote(text));
+    if (text.trim().length !== 0) {
+      dispatch(addNote(text));
+      setInputField("");
+    }
   };
 
   return (
     <div className="content">
       <div className="newNote">
-        <input type="text" value={inputField} onChange={handleChange} />
+        <input
+          type="text"
+          value={inputField}
+          onChange={handleChange}
+          onKeyPress={(ev) => {
+            if (ev.key === "Enter") handleNewNote(inputField);
+          }}
+        />
         <button
           onClick={() => {
             handleNewNote(inputField);
