@@ -9,7 +9,7 @@ const NoteCard = ({ note }) => {
   };
   const dispatch = useDispatch();
   return (
-    <div className="note" key={note.id}>
+    <div className="note">
       <button
         className="note__remove"
         onClick={() => {
@@ -18,7 +18,7 @@ const NoteCard = ({ note }) => {
       >
         x
       </button>
-      <p>{note.text}</p>
+      <p className="note__text">{note.text}</p>
     </div>
   );
 };
