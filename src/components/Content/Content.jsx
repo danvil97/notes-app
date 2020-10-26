@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addNote, removeNote } from "../../store/actions/notesActions";
-import "./Content.css";
+import { addNote } from "../../store/actions/notesActions";
+
+import NotesList from "../NotesList/NotesList";
+
+import "./Content.scss";
 
 export default function Content() {
   const [inputField, setInputField] = useState("");
@@ -16,10 +19,6 @@ export default function Content() {
     dispatch(addNote(text));
   };
 
-  const handleRemoveNote = (index) => {
-    dispatch(removeNote(index));
-  };
-
   return (
     <div className="content">
       <div className="newNote">
@@ -32,23 +31,7 @@ export default function Content() {
           Add
         </button>
       </div>
-      <div className="notesList">
-        {notes.length !== 0 &&
-          notes.map((note) => (
-            <div className="note" key={note.id}>
-              <button
-                className="note__remove"
-                onClick={() => {
-                  handleRemoveNote(note.id);
-                }}
-              >
-                x
-              </button>
-              <p>{note.text}</p>
-            </div>
-          ))}
-        {notes.length === 0 && <p>There are no notes here :)</p>}
-      </div>
+      <NotesList notes={notes} />
     </div>
   );
 }

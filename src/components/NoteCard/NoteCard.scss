@@ -1,0 +1,26 @@
+.note {
+  position: relative;
+  padding: 8px;
+
+  border: 1px solid #d3c86b;
+  border-radius: 4px;
+
+  background-color: #f3e98d;
+
+  &:hover > .note__remove {
+    display: block;
+    top: -8px;
+    right: -8px;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    outline: none;
+
+    position: absolute;
+  }
+}
+
+.note__remove {
+  display: none;
+}
